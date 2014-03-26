@@ -1,0 +1,365 @@
+\documentclass[a4paper,12pt]{article}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% STANDARD PREAMBLE %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+%\usepackage{cancel} % to do the blank symbol
+%\usepackage{enumitem} % allows indexing lists from 0
+
+\usepackage{listings} % for code
+\usepackage{color}
+
+\lstset{tabsize=4}
+
+\newtheorem*{proofSketch}{Proof Sketch}
+\newtheorem{lemma}{Lemma}
+
+\usepackage{mathtools} % for paired delimiters
+\DeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
+\DeclarePairedDelimiter{\gen}{\langle}{\rangle}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\norm}{\lvert}{\rvert}
+
+\renewcommand{\thesubsection}{\thesection.(\alph{subsection})} % subsections should have letters
+
+\lstset {
+numbers=left,
+stepnumber=1,
+tabsize=2,
+language=Python,
+breaklines=true
+%basicstyle=\footnotesize
+}
+
+\numberwithin{equation}{section}
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% END PREAMBLE %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{titlepage}
+\title{MAT301 Problem Set 3}
+\author{Daniel Kats \\ 997492468}
+\clearpage
+\maketitle
+\thispagestyle{empty}
+\end{titlepage}
+
+\section{Question 1}
+
+\subsection{}
+
+Suppose that $x = \left( \begin{array}{cc}
+a & c \\
+0 & 1 \end{array} \right) \in G$. Then we have
+
+\begin{equation}\label{1a:xH}
+xH = \left( \begin{array}{cc}
+a & c \\
+0 & 1 \end{array} \right)\left( \begin{array}{cc}
+1 & b \\
+0 & 1 \end{array} \right) = 
+\left( \begin{array}{cc}
+a & ab + c\\
+0 & 1
+\end{array} \right)
+\end{equation}
+
+Also
+
+\begin{equation}\label{1a:Hx}
+Hx = \left( \begin{array}{cc}
+1 & b \\
+0 & 1 \end{array} \right)\left( \begin{array}{cc}
+a & c \\
+0 & 1 \end{array} \right) = 
+\left( \begin{array}{cc}
+a & b + c\\
+0 & 1
+\end{array} \right)
+\end{equation}
+
+Note that \eqref{1a:Hx} is not equal to \eqref{1a:xH} when $a \neq 1$ and $b \neq 0$. Therefore $H$ is not a normal subgroup of $G$.
+
+\subsection{}
+Consider $x = (1, 2, 3) \in S_4$. Then $x^{-1} = (3, 2, 1)$. Using the normal subgroup test from Theorem 9.1 in the book, we look at $xHx^{-1}$ and see if this is a subset of $H$. We know that any element in $H$ has the form $(1, 3, 4)^n$ where $n$ is a natural number. Consider the case where $n = 2$
+
+\begin{equation}
+(1, 2, 3)(1, 3, 4)^2(3, 2, 1) = (1, 2, 3)(1, 4, 3)(3, 2, 1) = (1, 2, 4) \notin H
+\end{equation}
+
+Therefore $xHx^{-1} \not\subset H$, so $H$ is not a normal subgroup of $G$.
+
+\section{Question 2}
+
+%(a)
+\subsection{}
+By Lagrange's Theorem, the number of distinct cosets is precisely $|G| / |H|$. Moreover, we can see that $H = \gen{69} = \gen{3}$. Therefore the order of the factor group $G / H$ is simply 3.
+
+%(b)
+\subsection{}
+The element $46 + \gen{69}$ is the same as the element $46 + \gen{3}$, and is actually the same as the element $1 + \gen{3}$. Therefore, the order of this element is 3.
+
+\section{Question 3}
+
+\begin{proof}
+Suppose that $H$ is a normal subgroup of $S_4$ such that $|H| = 8$. I will show that every element of order 2 in $S_4$ must belong to $H$.
+
+Since $H$ is normal, the factor group $S_4 / H$ exists and has order 3 (by Lagrange's Theorem, and because $|S_n| = n!$). Since the order of each element divides the order of the group, for all $\alpha \in S_4$, it is the case that $(\alpha H)^3 = \alpha^3 H = H$ (because each coset of the form $\alpha H$ is actually an element of the factor group). This means that $\alpha^3 \in H$ for all $\alpha \in S_4$.
+
+Any $\alpha$ of order 2 has the property that $\alpha^3 = \alpha$. So $H$ contains all elements of order 2. But there are at least 9 of these: 6 of the form $(a, b)$ and at least 3 of the form $(a, b)(c, d)$. Contradiction, because cardinality of $H$ should be 8 < 9.
+
+\end{proof}
+
+\section{Question 4}
+
+% (a)
+\subsection{}
+
+I will show $H^{\prime}$ is a subgroup of $G$.
+
+\begin{proof}
+Consider $e \in G$. Clearly $e \in H$, and $e^2 = e$, so $e \in H^{\prime}$, so $H^{\prime}$ is non-empty. Not consider any two elements $a, b \in H^{\prime}$. Clearly $a, b \in G$ and we have $a^2, b^2 \in H$ by definition. Notice that because $G$ is a group, $ab^{-1} \in G$. All that remains to be proven is that $ab^{-1}ab^{-1} \in H$. 
+
+Now, suppose that $G / H$ is Abelian. Then for every $a, b \in G$, we have:
+
+\begin{equation}
+(aH)(bH) = (bH)(aH)
+\end{equation}
+
+\begin{equation}
+abH = baH
+\end{equation}
+
+\begin{equation}
+abH = baH
+\end{equation}
+
+This means that for every $x \in H$, there exists $y \in H$ such that
+
+\begin{equation}
+abx = bay
+\end{equation}
+
+\begin{equation}
+(ba)^{-1}abx = y
+\end{equation}
+
+Therefore it must be the case that $(ba)^{-1}abx \in H$. Since $x \in H$ and $H$ is a group, $(ba)^{-1}ab \in H$. And by closure of $H$, we can multiply this quantity on the left by $a^2$ and on the right by $b^{-2}$, and we get $ab^{-1}ab^{-1} \in H$. So we have shown that $H^{\prime}$ is a subgroup of $G$.
+
+\end{proof}
+
+I will show $H^{\prime}$ is normal in $G$.
+\begin{proof}
+I will show that for every $g \in G$ and $a \in H^{\prime}$, it follows that $gag^{-1} \in H^{\prime}$. First, it is trivial that $gag^{-1} \in G$, since $G$ is a group. Now I must show $(gag^{-1})^2 \in H$. $(gag^{-1})^2 = ga^2g^{-1}$. But this is trivial when $a^2 \in H$, since we know $H$ is normal, which is precisely this statement.
+\end{proof}
+
+\section{Question 5}
+
+% (a)
+\subsection{}
+
+Suppose $x = a^i \in G$ and $y = a^j \in G$ where $i$ and $j$ are non-negative integers.
+
+\begin{equation}
+\phi (x) \phi(y) = \phi(a^i)\phi(a^j) = b^{15i}b^{15j} = b^{15(i + j)}
+\end{equation}
+
+\begin{equation}
+\phi(xy) = \phi(a^ia^j) = \phi(a^{i + j}) = b^{15(i + j)}
+\end{equation}
+
+Therefore $\phi$ is a homomorphism by definition.
+
+Since the order of $G^{\prime}$ is 18, we have $b^{18k} = e$ where $k$ is a non-negative integer. So we are looking for all non-negative integers $j$ such that $15j = 18k$. $j = \frac{6k}{5}$. Since $j$ must be an integer, $k$ must be divisible by 5, and so $j$ may be any multiple of 6. However, note that the order of $G$ is 12, so there are actually only 2 elements in $G$ that fit this criteria: $a^0 = e$ and $a ^ 6$.
+
+\begin{equation}
+Ker(\phi) = \{e, a^6\}
+\end{equation}
+
+%(b)
+\subsection{}
+
+Let $x, y \in \mathbb{R}$.
+
+\begin{equation*}
+\phi(x)\phi(y) = 
+\left( 
+	\begin{array}{cc}
+	cos(x) & -sin(x) \\
+	sin(x) & cos(x) 
+	\end{array} 
+\right)
+\left( 
+	\begin{array}{cc}
+	cos(y) & -sin(y) \\
+	sin(y) & cos(y) 
+	\end{array} 
+\right)
+\end{equation*}
+
+\begin{equation*}
+=\left( 
+	\begin{array}{cc}
+	cos(x)cos(y) - sin(x)sin(y) & -cos(x)sin(y) - sin(x)cos(y) \\
+	sin(x)cos(y) + cos(x)sin(y)  & -sin(x)sin(y) + cos(x)cos(y)
+	\end{array} 
+\right)
+\end{equation*}
+\begin{equation}
+= 
+\left( 
+	\begin{array}{cc}
+	cos(x + y) & -sin(x + y) \\
+	sin(x + y)  & cos(x + y)
+	\end{array} 
+\right)
+\end{equation}
+
+\begin{equation}
+\phi(x + y) = \left( 
+	\begin{array}{cc}
+	cos(x + y) & -sin(x + y) \\
+	sin(x + y)  & cos(x + y)
+	\end{array} 
+\right)
+\end{equation}
+
+Therefore $\phi$ is a homomorphism by definition. Note that this is under the assumption that the group operation is addition in the reals.
+
+The identity in $G^{\prime}$ is $\left( 
+	\begin{array}{cc}
+	1 & 0 \\
+	0  & 1
+	\end{array} 
+\right)$ so $cos(x) = 1$ and $sin(x) = 0$. Therefore the kernel consists of all $x$ that are an integer multiple of $2\pi$.
+
+\begin{equation}
+Ker(\phi) = \{ 2\pi k \mid k \in \mathbb{Z} \}
+\end{equation}
+
+\section{Question 6}
+
+%(a)
+\subsection{}
+
+Prove that $\phi(s)$ is a reflection.
+
+\begin{proof}
+
+Consider the property of dihedral groups where $r$ is any rotation and $s$ is any reflection: $rs = sr^{-1}$. In particular, note that $\phi(rs) = \phi(sr^{-1})$
+
+\begin{equation}
+\phi(rs) = \phi(r)\phi(s) = r^{12}\phi(s)
+\end{equation}
+
+\begin{equation}
+\phi(sr^{-1}) = \phi(s)[\phi(r)]^{-1} = \phi(s)(r^{12})^{-1} = \phi(s)r^8
+\end{equation}
+
+Note that these two quantities must equal each other.
+
+\begin{equation}
+r^{12}\phi(s) = \phi(s)r^{8}
+\end{equation}
+
+Note that $\phi(s) \neq e$, since $r^{12} \neq r^8$ (which we know because $|r| = 20$). 
+
+Suppose that $\phi(s)$ is a rotation. Note that rotations commute, so we have $\phi(s)r^{12} = \phi(s)r^{8}$. Now we are able to left-multiply by $\phi(s)^{-1}$ (which must exist because $D_{20}$ is a group) to obtain $r^{12} = r^8$, which is a contradiction. Therefore $\phi(s)$ cannot be a rotation either. It follows that $\phi(s)$ must be a reflection.
+
+\end{proof}
+
+%(b)
+\subsection{}
+
+Because of part (a), we know that no reflection is in the kernel. For any rotation $x$, note that $x = r^k$ where $k$ is a non-negative integer. We have 
+
+\begin{equation}
+\phi(x) = \phi(r^k) = [\phi(r)]^k = r^{12k}
+\end{equation}
+
+If we have $r^{12k} = e$, then $12k$ must be divisible by 20. It follows that $3k$ must be divisible by 5, so $k$ must be a multiple of 5.
+
+\begin{equation}
+Ker(\phi) = \{e, r^5, r^{10}, r^{15} \}
+\end{equation}
+
+These are the only elements in the kernel, because $D_{20}$ contains only reflections and rotations (and identity maps to identity under all homomorphisms).
+
+%(c)
+\subsection{}
+
+\begin{proof}
+Let $s$ be any reflection from $D_{20}$, and let $r$ be the rotation of degree 20 from $D_{20}$. 
+
+On the one hand, we have:
+
+\begin{equation}
+sr\{e, r^5, r^{10}, r^{10} \} = \{ sr, sr^6, sr^{11}, sr^{16} \}
+\end{equation}
+
+On the other hand, we have:
+
+\begin{equation}
+rs \{e, r^5, r^{10}, r^{10} \} = sr^{-1} \{e, r^5, r^{10}, r^{10} \} =  \{ sr^{19}, sr^4, sr^{9}, sr^{14} \}
+\end{equation}
+
+Clearly these two sets are not equal, so the factor group is not Abelian.
+\end{proof}
+
+%(d)
+\subsection{}
+Consider the Theorem 10.3 from the textbook. Since $\phi$ is a homomorphism from $D_{20}$ to $D_{20}$, we have that there exists an isomorphism between $D_{20} / Ker \phi$ and $D_{20}$ given by $gKer\phi \rightarrow \phi(g)$. This works because $\phi$ is onto. $m$ in this case is 20.
+
+\section{Question 7}
+
+%(a)
+\subsection{}
+ 
+I will show that $G$ is not Abelian.
+
+\begin{proof}
+Suppose that $G$ is Abelian. Consider any two elements $x, y \in S_4$. Because $\phi$ is onto, there exist elements $a, b \in G$ such that $\phi(a) = x$ and $\phi(b) = y$. Therefore we have:
+
+\begin{equation}
+xy = \phi(a)\phi(b) = \phi(ab) = \phi(ba) = \phi(b)\phi(a) = yx
+\end{equation}
+
+And we have shown that $S_4$ is Abelian, which we know is not the case. Contradiction.
+\end{proof}
+
+%(b)
+\subsection{}
+I will show that $G$ contains an element of order 4.
+
+\begin{proof}
+We know that $S_4$ has an element of order 4. Call it $\alpha$. Because $\phi$ is onto, there exists $x \in G$ such that $\phi(x) = \alpha$. Moreover, by properties of isomorphisms, we have $|x|$ is divisible by 4, in particular $x^{4k} = e$ for some positive integer $k$. Using our theorem for order of powers of group elements, $x^k$ must necessarily have order 4.
+\end{proof}
+
+%(c)
+\subsection{}
+
+I will prove that $H$ is a subgroup of $G$.
+\begin{proof}
+First, notice that $e \in A_4$ and $\phi$ maps identity to identity. Therefore $e \in H$ (and $H$ is non-empty). Now, consider $a, b \in H$. I will show that $ab^{-1} \in H$ as well.
+
+This is evident simply by properties of homomorphisms.
+
+\begin{equation}
+\phi(ab^{-1}) = \phi(a)\phi(b^{-1}) = \phi(a)[\phi(b)]^{-1}
+\end{equation}
+
+We already know $\phi(a) \in A_4$, and because $A_4$ is a group and $\phi(b) \in A_4$, it must be the case that $[\phi(b)]^{-1} \in A_4$ as well. And again because $A_4$ is a group, the whole thing must be in $A_4$. So by definition $ab^{-1} \in H$ and we are done.
+
+\end{proof}
+
+%(d)
+\subsection{}
+
+It is normal. Note that if $x \in G$ is part of $H$, then it is trivial. And if $x \notin H$, then clearly $x^{-1} \notin H$. It must be the case that both are mapped to something not in $A_4$, otherwise they would be in $A_4$. And we know that the product of two odd permutations and an even permutation is an even permutation. So we are done.
+
+\end{document}

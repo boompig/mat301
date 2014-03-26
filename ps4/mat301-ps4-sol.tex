@@ -1,0 +1,62 @@
+\documentclass[a4paper,12pt]{article}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% STANDARD PREAMBLE %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+%\usepackage{cancel} % to do the blank symbol
+%\usepackage{enumitem} % allows indexing lists from 0
+
+\usepackage{listings} % for code
+\usepackage{color}
+
+\lstset{tabsize=4}
+
+\newtheorem*{proofSketch}{Proof Sketch}
+\newtheorem{lemma}{Lemma}
+
+\usepackage{mathtools} % for paired delimiters
+\DeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
+\DeclarePairedDelimiter{\gen}{\langle}{\rangle}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\norm}{\lvert}{\rvert}
+
+\renewcommand{\thesubsection}{\thesection.(\alph{subsection})} % subsections should have letters
+
+\lstset {
+numbers=left,
+stepnumber=1,
+tabsize=2,
+language=Python,
+breaklines=true
+%basicstyle=\footnotesize
+}
+
+\numberwithin{equation}{section}
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% END PREAMBLE %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{titlepage}
+\title{MAT301 Problem Set 4}
+\author{Daniel Kats \\ 997492468}
+\clearpage
+\maketitle
+\thispagestyle{empty}
+\end{titlepage}
+
+\section{Question 1}
+
+\subsection{ }
+
+Prove that $H$ is a normal subgroup of $G$.
+
+\begin{proof}
+First, I will show that $H$ is a subgroup. Clearly $r \in H$.
+\end{proof}
+
+\end{document}
